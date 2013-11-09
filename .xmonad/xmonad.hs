@@ -16,5 +16,5 @@ main = xmonad =<< xmobar defaultConfig
   { modMask = mod4Mask
   , layoutHook = myLayout
   , startupHook = setWMName "LG3D"
-  , terminal = "gnome-terminal"
+  , terminal = "exec gnome-terminal"
   }
