@@ -1,0 +1,19 @@
+Config { font = "xft:ubuntu-9"  -- TODO: Make useful for Debian
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Weather "KMDW" ["-t","Midway: <skyCondition> <tempF>F"] 36000
+                    , Run Weather "KIGQ" ["-t","Lansing: <skyCondition> <tempF>F"] 36000
+                    , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red","-t","CPU <total>%"] 10
+                    , Run Memory ["-t","Mem <usedratio>%"] 10
+                    , Run Swap ["-t","Swap <usedratio>%"] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%multicpu% | %memory% * %swap% | %eth0% } %StdinReader% { <fc=#ee9a00>%date%</fc> | %KMDW% | %KIGQ% | %uname%"
+       }
