@@ -1,0 +1,14 @@
+[extensions]
+color =
+histedit =
+mq =
+pager =
+rebase =
+record =
+
+[pager]
+pager = LESS=FSRX less
+attend = annotate, cat, diff, export, glog, help, log, qdiff
+
+[ui]
+username = Lucas Bergman <lucas@bergmans.us>
