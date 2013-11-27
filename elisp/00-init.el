@@ -7,6 +7,10 @@
 
 (require 'slb-util)
 
+;; By default, Emacs runs stop-the-world GC after consing something like
+;; 800,000 bytes. Raise that to 10 MiB, because 1990 called.
+(setq gc-cons-threshold (* 10 1024 1024))
+
 (slb-hack-mode c-mode-hook)
 (slb-hack-mode c++-mode-hook)
 (slb-hack-mode conf-mode-hook)
