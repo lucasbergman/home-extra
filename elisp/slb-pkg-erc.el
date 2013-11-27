@@ -4,13 +4,6 @@
 (defvar *slb-display-host* nil
   "Host name of a place to send display notifications, or nil for local host")
 
-(erc-match-mode 1)
-(erc-spelling-mode 1)
-
-(custom-set-variables
- '(erc-hide-list '("JOIN" "PART" "QUIT"))
- '(erc-keywords '("\\bslb\\b" "\\bLucas\\b")))
-
 (defun slb-erc-global-notify (matched-type nick msg)
   (when (and (or (eq matched-type 'current-nick)
                  (eq matched-type 'keyword))
@@ -33,4 +26,11 @@
 
       (shell-command cmd))))
 
-(add-hook #'erc-text-matched-hook #'slb-erc-global-notify)
+(eval-after-load "erc"
+  '(progn
+     (setq erc-hide-list '("JOIN" "PART" "QUIT")
+           erc-keywords '("\\bslb\\b" "\\bLucas\\b"))
+     (erc-match-mode 1)
+     (erc-spelling-mode 1)
+     (erc-button-mode 1)
+     (add-hook #'erc-text-matched-hook #'slb-erc-global-notify)))
