@@ -1,3 +1,5 @@
+module Main (main) where
+
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
@@ -8,7 +10,7 @@ myLayout = onWorkspace "1" (Mirror unevenTiledLayout) defaultLayouts
     defaultLayouts = evenTiledLayout ||| Mirror evenTiledLayout ||| Full
     unevenTiledLayout = tiledLayout $ 3/5
     evenTiledLayout = tiledLayout $ 1/2
-    tiledLayout ratio = Tall nmaster delta ratio
+    tiledLayout = Tall nmaster delta
     nmaster = 1
     delta = 3/100
 
