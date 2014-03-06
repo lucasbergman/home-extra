@@ -27,7 +27,7 @@ fixGnomeRunKey conf = conf
 
 main = xmonad $ fixGnomeRunKey gnomeConfig
   { modMask = mod4Mask
-  , startupHook = setWMName "LG3D"
-  , terminal = "exec gnome-terminal"
+  , borderWidth = 3
   , layoutHook = desktopLayoutModifiers myLayout
+  , terminal = "exec urxvt"
   }
