@@ -54,6 +54,7 @@
 (setq case-replace nil)
 (global-auto-revert-mode)
 (blink-cursor-mode 0)
+(setq-default display-buffer-reuse-frames t)
 
 ;; For the benefit of Emacs < 23...
 (global-font-lock-mode 1)
@@ -91,22 +92,21 @@
 ;;
 ;; whitespace-mode
 ;;
-(custom-set-variables
- '(whitespace-style '(face trailing space-after-tab
-                      space-before-tab lines-tail))
- '(whitespace-line-column 78))
+(setq whitespace-style '(face trailing space-after-tab
+                         space-before-tab lines-tail)
+      whitespace-line-column 78)
 
+;;
 ;; diff
-(custom-set-variables
- '(diff-switches "-u"))
+;;
+(setq diff-switches "-u")
 
 ;;
 ;; ido-mode
 ;;
 (ido-mode t)
-(custom-set-variables
- '(ido-enable-flex-matching t)
- '(ido-everywhere t))
+(setq ido-enable-flex-matching t
+      ido-everywhere t)
 
 ;;
 ;; midnight-mode
@@ -117,11 +117,10 @@
 ;; Uniquification of buffer names
 ;;
 (require 'uniquify)
-(custom-set-variables
- '(uniquify-buffer-name-style 'reverse)
- '(uniquify-separator "|")
- '(uniquify-after-kill-buffer-p t)
- '(uniquify-ignore-buffers-re "^\\*"))
+(setq uniquify-buffer-name-style 'reverse
+      uniquify-separator "|"
+      uniquify-after-kill-buffer-p t
+      uniquify-ignore-buffers-re "^\\*")
 
 ;;
 ;; X me harder
