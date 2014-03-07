@@ -6,14 +6,12 @@ import XMonad.Config.Gnome (gnomeConfig, gnomeRun)
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Util.EZConfig (additionalKeysP, removeKeysP)
 
-myLayout = onWorkspace "1" (Mirror unevenTiledLayout) defaultLayouts
+myLayouts = onWorkspace "1" (primary ||| defaultLayouts) defaultLayouts
   where
-    defaultLayouts = evenTiledLayout ||| Mirror evenTiledLayout ||| Full
-    unevenTiledLayout = tiledLayout $ 3/5
-    evenTiledLayout = tiledLayout $ 1/2
-    tiledLayout = Tall nmaster delta
-    nmaster = 1
-    delta = 3/100
+    primary = Mirror $ Tall 3 delta 0.65
+    defaultLayouts = tiledLayout ||| Mirror tiledLayout ||| Full
+    tiledLayout = Tall 1 delta 0.5
+    delta = 0.03
 
 -- If we're using the mod4 as a modifier key, then move the binding for the
 -- GNOME run-program dialog from mod-p to mod-shift-p. GNOME steals mod4-p
@@ -28,6 +26,6 @@ fixGnomeRunKey conf = conf
 main = xmonad $ fixGnomeRunKey gnomeConfig
   { modMask = mod4Mask
   , borderWidth = 3
-  , layoutHook = desktopLayoutModifiers myLayout
+  , layoutHook = desktopLayoutModifiers myLayouts
   , terminal = "exec urxvt"
   }
