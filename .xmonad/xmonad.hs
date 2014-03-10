@@ -24,8 +24,8 @@ fixGnomeRunKey conf@XConfig { modMask = mod4Mask } =
 fixGnomeRunKey conf = conf
 
 main = xmonad $ fixGnomeRunKey gnomeConfig
-  { modMask = mod4Mask
-  , borderWidth = 3
-  , layoutHook = desktopLayoutModifiers myLayouts
-  , terminal = "exec urxvt"
-  }
+           { modMask = mod4Mask
+           , borderWidth = 3
+           , layoutHook = desktopLayoutModifiers myLayouts
+           , terminal = "exec urxvt"
+           }
