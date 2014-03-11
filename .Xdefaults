@@ -3,8 +3,8 @@ URxvt.foreground: #ffffff
 URxvt.saveLines: 30000
 URxvt.scrollBar_right: true
 ! TODO: Fix fonts for Debian
-URxvt.font: xft:Ubuntu Mono:pixelsize=14:style=Regular:antialias=true:hinting=true
-URxvt.boldFont: xft:Ubuntu Mono:pixelsize=14:style=Bold:antialias=true:hinting=true
+URxvt.font: xft:Ubuntu Mono:pixelsize=14:style=Regular
+URxvt.boldFont: xft:Ubuntu Mono:pixelsize=14:style=Bold
 ! Mouse button 2 allows dingus-clicking URLs.
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: google-chrome
