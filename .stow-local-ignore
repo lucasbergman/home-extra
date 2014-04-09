@@ -1,4 +1,5 @@
-\.git
-\.gitignore
-elisp$
-fixups$
+.+~
+/\.git
+/\.gitignore
+/elisp
+/fixups
