@@ -56,10 +56,6 @@
 (blink-cursor-mode 0)
 (setq-default display-buffer-reuse-frames t)
 
-;; For the benefit of Emacs < 23...
-(global-font-lock-mode 1)
-(transient-mark-mode t)
-
 (defvar *slb-preferred-font*
   (cond
    ((eq window-system 'ns) "menlo-12")
