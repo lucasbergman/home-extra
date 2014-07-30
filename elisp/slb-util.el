@@ -20,15 +20,6 @@ Emacsen."
     (untabify (point-min) (point-max)))
   nil)
 
-(defun slb-dedicate-buffer-window (buffer-name)
-  "Mark the window containing the given buffer as \"dedicated.\"
-
-Specifically, I use this on my IRC or project viewing buffer to
-keep Emacs from clobbering it with random file buffers created by
-emacsclient or help invocations."
-  (interactive "b")
-  (set-window-dedicated-p (get-buffer-window (get-buffer buffer-name)) t))
-
 (defmacro slb-hack-mode (hookvar &optional text-p &rest body)
   "Run common code as part of the hook HOOKVAR, followed by any
 other forms specified by BODY.  I use this for programming
