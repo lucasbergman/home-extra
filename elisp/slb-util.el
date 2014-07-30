@@ -1,6 +1,3 @@
-(eval-when-compile
-  (require 'cl))
-
 (defun slb-untabify-buffer ()
   "Convert tabs to spaces and elide trailing whitespace.
 
@@ -40,22 +37,15 @@ whitespace normalization on save, auto-fill, etc."
 (defun slb-package-bootstrap (packages)
   "Given PACKAGES, a list of ELPA packages, ensure that each is
 installed. If not, prompt to install those that are missing."
-  (let* ((force-symbol (lambda (maybe-symbol)
-                         (if (symbolp maybe-symbol)
-                             maybe-symbol
-                           (intern maybe-symbol))))
-         (missing (loop for p in (mapcar force-symbol packages)
-                        unless (package-installed-p p)
-                        collect p)))
-    (if missing
-        (if (y-or-n-p "Install missing packages? ")
-            (progn
-              (unless package-archive-contents
-                (package-refresh-contents))
-              (mapc #'package-install missing)
-              t)
-          nil)
-      t)))
+  (let ((pkgs (remove-if #'package-installed-p (mapcar #'intern packages))))
+    (if (null pkgs)
+        t
+      (if (not (y-or-n-p (format "Install %d missing package(s)? "
+                                 (length pkgs))))
+          nil
+        (unless package-archive-contents
+          (package-refresh-contents))
+        (mapc #'package-install pkgs)))))
 
 (defun slb-try-load (lisp-file)
   (message "Trying to load package configuration %s..." lisp-file)
