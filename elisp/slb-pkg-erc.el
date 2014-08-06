@@ -2,7 +2,7 @@
   (require 'erc))
 
 (defvar *slb-display-host* nil
-  "Host name of a place to send display notifications, or nil for local host")
+  "Host name to send display notifications, or nil for local host")
 
 (defun slb-erc-global-notify (matched-type nick msg)
   (when (and (or (eq matched-type 'current-nick)

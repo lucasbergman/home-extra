@@ -1,9 +1,6 @@
-(defvar *slb-packages-extra* '("auto-complete" "go-mode" "js2-mode"
-                               "haskell-mode" "smex")
-  "Non-built-in packages that I want installed in my environment.")
-
-(defvar *slb-packages-builtin* '("erc" "grep")
-  "Built-in packages that I want installed in my environment.")
+(eval-when-compile
+  (require 'ido)
+  (require 'whitespace))
 
 (require 'slb-util)
 

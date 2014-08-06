@@ -37,11 +37,11 @@ whitespace normalization on save, auto-fill, etc."
 (defun slb-package-bootstrap (packages)
   "Given PACKAGES, a list of ELPA packages, ensure that each is
 installed. If not, prompt to install those that are missing."
-  (let ((pkgs (remove-if #'package-installed-p (mapcar #'intern packages))))
+  (let ((pkgs (cl-remove-if #'package-installed-p (mapcar #'intern packages))))
     (if (null pkgs)
         t
-      (if (not (y-or-n-p (format "Install %d missing package(s)? "
-                                 (length pkgs))))
+      (if (not (y-or-n-p
+                (format "Install %d missing package(s)? " (length pkgs))))
           nil
         (unless package-archive-contents
           (package-refresh-contents))
@@ -55,8 +55,8 @@ installed. If not, prompt to install those that are missing."
   "Given a string PACKAGE, load the lisp file slb-PACKAGE to
 configure that package. Returns non-nil if and only if that lisp
 file was loaded successfully."
-  (if (slb-try-load (concat "slb-pkg-" package))
-      t
-    (slb-try-load (concat "slb-pkg-local-" package))))
+  (if (not (package-installed-p (intern package)))
+      nil
+    (slb-try-load (concat "slb-pkg-" package))))
 
 (provide 'slb-util)
