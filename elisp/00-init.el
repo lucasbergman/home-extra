@@ -122,4 +122,8 @@
   (setq x-select-enable-clipboard t
         interprogram-paste-function 'x-cut-buffer-or-selection-value))
 
-(server-start)
+;;
+;; Start the server process if I'm not already running daemon mode.
+;;
+(unless (daemonp)
+  (server-start))
