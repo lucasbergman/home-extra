@@ -1,7 +1,0 @@
-#!/bin/sh
-exec </dev/null
-PATH=$HOME/.cabal/bin:$PATH
-export PATH
-gnome-settings-daemon &
-gnome-screensaver &
-exec ssh-agent dbus-launch --exit-with-session xmonad
