@@ -39,10 +39,6 @@
 (setq inhibit-startup-screen t)
 (when (eq window-system 'x)
   (tooltip-mode 0))            ; Tooltips render like ass in X/GTK+.
-(unless (eq window-system 'ns)
-  (menu-bar-mode 0))           ; The menubar is a waste, except on Mac OS X.
-(unless (null window-system)
-  (tool-bar-mode 0))           ; The toolbar is aggressively stupid.
 (line-number-mode 1)
 (column-number-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -71,6 +67,10 @@
                             (line-spacing . 1)
                             (vertical-scroll-bars . right)
                             (font . ,*slb-preferred-font*)
+                            ;; The toolbar is aggressively stupid.
+                            (tool-bar-lines . 0)
+                            ;; The menu bar is a waste, except on Mac OS.
+                            (menu-bar-lines . ,(if (eq window-system 'ns) 1 0))
                             )
       default-frame-alist initial-frame-alist)
 
