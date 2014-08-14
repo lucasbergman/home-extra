@@ -1,8 +1,8 @@
 module Main (main) where
 
 import XMonad
-import XMonad.Config.Desktop (desktopLayoutModifiers)
-import XMonad.Config.Gnome (gnomeConfig)
+import XMonad.Config.Desktop (desktopConfig, desktopLayoutModifiers)
+import XMonad.Config.SLB.GNOME (gnomeRegister)
 import XMonad.Hooks.DynamicLog (xmobar)
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -17,11 +17,12 @@ myLayouts = onWorkspace "1" (primary ||| defaultLayouts) defaultLayouts
 main = xmonad =<< xmobar config
   where
     config = myGnomeConfig `additionalKeysP` myKeys
-    myGnomeConfig = gnomeConfig
+    myGnomeConfig = desktopConfig
         { modMask = mod4Mask
         , borderWidth = 3
         , layoutHook = desktopLayoutModifiers myLayouts
         , terminal = "exec gnome-terminal"
+        , startupHook = gnomeRegister >> startupHook desktopConfig
         }
     myKeys =
         [ ("C-M1-l", spawn "gnome-screensaver-command --lock")
