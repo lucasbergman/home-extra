@@ -5,7 +5,7 @@ Config { font = "xft:sans-9"
        , lowerOnStart = True
        , commands = [ Run Weather "KMDW" ["-t","Midway: <skyCondition> <tempF>°F"] 18000
                     , Run Weather "KIGQ" ["-t","Lansing: <skyCondition> <tempF>°F"] 18000
-                    , Run Network "eth0" ["-L","0","-H","1000","--normal","green","--high","red","-t","<dev> (Kb/s): <rx>↓ <tx>↑"] 50
+                    , Run Network "eth0" ["-L","50","-H","1000","--normal","green","--high","red","-t","<dev> (kb/s): <rx>↓ <tx>↑"] 50
                     , Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red","-t","CPU <total>%"] 50
                     , Run Memory ["-t","Used <usedratio>%"] 100
                     , Run Swap ["-t","Swap <usedratio>%"] 100
