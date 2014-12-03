@@ -1,0 +1,5 @@
+#!/bin/sh
+exec pulseaudio --daemonize=false \
+  --load="module-x11-publish display=$DISPLAY" \
+  --load="module-x11-bell display=$DISPLAY" \
+  --load="module-x11-cork-request display=$DISPLAY"

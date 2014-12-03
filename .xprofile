@@ -1,0 +1,7 @@
+#!/bin/sh
+xrdb -load < $HOME/.Xdefaults
+exec                                                                    \
+  ssh-agent                                                             \
+  with-dbus-session --config-file=$HOME/hack/home-extra/dbus/conf       \
+  with-runsv-dir $HOME/.xservices                                       \
+  xmonad

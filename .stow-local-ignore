@@ -2,4 +2,6 @@
 /\.config
 /\.git
 /\.gitignore
+/dbus
 /elisp
+/xsession
