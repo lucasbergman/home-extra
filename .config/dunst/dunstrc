@@ -1,0 +1,29 @@
+# -*- mode: conf; indent-tabs-mode: nil -*-
+
+[global]
+font = "Sans 14"
+allow_markup = yes
+format = "<b>%s</b> %b"
+word_wrap = yes
+geometry = "500x16-0+30"
+transparency = 20
+
+show_age_threshold = 60
+idle_threshold = 120
+padding = 10
+horizontal_padding = 10
+shrink = yes
+show_indicators = yes
+
+[urgency_low]
+background = "#303030"
+foreground = "#d0d0d0"
+
+[urgency_normal]
+background = "#303030"
+foreground = "#d0d0d0"
+
+[urgency_critical]
+background = "#333333"
+foreground = "#f05050"
+timeout = 0
