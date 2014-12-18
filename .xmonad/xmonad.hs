@@ -14,9 +14,10 @@ myLayouts = onWorkspace "1" (primary ||| defaultLayouts) defaultLayouts
     tiledLayout = Tall 1 delta 0.5
     delta = 0.03
 
-main = xmonad =<< xmobar config
+main :: IO ()
+main = xmonad =<< xmobar c
   where
-    config = myConfig `additionalKeysP` myKeys
+    c = myConfig `additionalKeysP` myKeys
     myConfig = desktopConfig
         { modMask = mod4Mask
         , borderWidth = 3
