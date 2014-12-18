@@ -2,6 +2,7 @@ module Main (main) where
 
 import XMonad
 import XMonad.Config.Desktop (desktopConfig, desktopLayoutModifiers)
+import XMonad.Config.SLB.Prompt (myShellPrompt)
 import XMonad.Hooks.DynamicLog (xmobar)
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -24,4 +25,5 @@ main = xmonad =<< xmobar config
         }
     myKeys =
         [ ("C-M1-l", spawn "xscreensaver-command -lock")
+        , ("C-M1-k", myShellPrompt)
         ]
