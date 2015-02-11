@@ -1,7 +1,3 @@
-(eval-when-compile
-  (require 'ido)
-  (require 'whitespace))
-
 (require 'slb-util)
 
 ;; By default, Emacs runs stop-the-world GC after consing something like

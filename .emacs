@@ -26,7 +26,6 @@ Specifically, we find and load Lisp initialization files (those
 whose names start with a digit). If `user-init-file' is nil, that
 is set to the first initialization Lisp file found."
   (message "Processing Lisp initialization directory: %s" dir)
-  (byte-recompile-directory dir 0)
   (let ((init-files (directory-files dir t "^[0-9].*\\.el$")))
     ;; If we haven't set USER-INIT-FILE yet, set it to the first file.
     (when (and init-files (null user-init-file))

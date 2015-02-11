@@ -21,8 +21,4 @@
   (when command-args
     (grep-find command-args)))
 
-(setq grep-find-use-xargs 'gnu)
-
-;; Any adjusting of default grep paths (and its associated constellation like
-;; xargs and find) needs to happen before this.
-(grep-compute-defaults)
+(provide 'slb-grep-utils)

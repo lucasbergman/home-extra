@@ -1,5 +1,4 @@
-(eval-when-compile
-  (require 'erc))
+(require 'erc)
 
 (defvar *slb-display-host* nil
   "Host name to send display notifications, or nil for local host")
@@ -26,11 +25,4 @@
 
       (shell-command cmd))))
 
-(eval-after-load "erc"
-  '(progn
-     (setq erc-hide-list '("JOIN" "PART" "QUIT")
-           erc-keywords '("\\bslb\\b" "\\bLucas\\b"))
-     (erc-match-mode 1)
-     (erc-spelling-mode 1)
-     (erc-button-mode 1)
-     (add-hook #'erc-text-matched-hook #'slb-erc-global-notify)))
+(provide 'slb-erc-utils)
