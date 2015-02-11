@@ -1,3 +1,6 @@
+(require 'go-mode)
+(require 'slb-util)
+
 (let ((gipath (executable-find "goimports")))
   (setq gofmt-command (if (null gipath) "gofmt" "goimports")))
 
