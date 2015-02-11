@@ -56,8 +56,8 @@
    (t
     (if (= 0 (shell-command (concat "grep -q DISTRIB_ID=Ubuntu"
                                     " /etc/lsb-release 2>/dev/null")))
-        "-*-Ubuntu Mono-*-*-*-*-14-*-*-*-m-*-*-*"
-      "monospace-10"))))
+        "Droid Sans Mono:pixelsize=14"
+      "Monospace:pixelsize=12"))))
 
 ;;
 ;; Frame properties
