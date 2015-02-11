@@ -4,6 +4,9 @@
 ;; 800,000 bytes. Raise that to 10 MiB, because 1990 called.
 (setq gc-cons-threshold (* 10 1024 1024))
 
+;;
+;; Basic configuration for some built-in editing modes
+;;
 (slb-hack-mode c-mode-hook)
 (slb-hack-mode c++-mode-hook)
 (slb-hack-mode conf-mode-hook)
@@ -11,9 +14,9 @@
 (slb-hack-mode emacs-lisp-mode-hook)
 (slb-hack-mode html-mode-hook)
 (slb-hack-mode java-mode-hook nil
-  (make-variable-buffer-local 'whitespace-line-column)
+  (make-local-variable 'whitespace-line-column)
   (setq whitespace-line-column 98)
-  ;; Turn whitespace-mode off and on again for the changes to take effect.
+  ;; Turn WHITESPACE-MODE off and on again for the changes to take effect.
   (whitespace-mode 0)
   (whitespace-mode 1))
 (slb-hack-mode lisp-mode-hook)
@@ -24,6 +27,10 @@
 (slb-hack-mode sql-mode-hook)
 (slb-hack-mode text-mode-hook t)
 
+;;
+;; Weirdly, COMPILATION-START doesn't set the buffer read-only and turn on
+;; COMPILATION-MINOR-MODE by default.
+;;
 (add-hook #'compilation-start-hook
           #'(lambda (process)
               (setq buffer-read-only t)
@@ -71,36 +78,19 @@
       default-frame-alist initial-frame-alist)
 
 ;;
+;; X me harder
+;;
+(when (eq window-system 'x)
+  (setq x-select-enable-clipboard t
+        interprogram-paste-function 'x-cut-buffer-or-selection-value))
+
+;;
 ;; Enable some previously disabled functions.  Presumably these are
 ;; disabled by default, because they are capable of baffling new users.
 ;;
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
-;;
-;; whitespace-mode
-;;
-(setq whitespace-style '(face trailing space-after-tab
-                         space-before-tab lines-tail)
-      whitespace-line-column 78)
-
-;;
-;; diff
-;;
-(setq diff-switches "-u")
-
-;;
-;; ido-mode
-;;
-(ido-mode t)
-(setq ido-enable-flex-matching t
-      ido-everywhere t)
-
-;;
-;; midnight-mode
-;;
-(require 'midnight)
 
 ;;
 ;; Uniquification of buffer names
@@ -110,13 +100,6 @@
       uniquify-separator "|"
       uniquify-after-kill-buffer-p t
       uniquify-ignore-buffers-re "^\\*")
-
-;;
-;; X me harder
-;;
-(when (eq window-system 'x)
-  (setq x-select-enable-clipboard t
-        interprogram-paste-function 'x-cut-buffer-or-selection-value))
 
 ;;
 ;; Start the server process if I'm not already running daemon mode.
