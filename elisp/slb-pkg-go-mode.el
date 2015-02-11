@@ -1,3 +1,6 @@
+(let ((gipath (executable-find "goimports")))
+  (setq gofmt-command (if (null gipath) "gofmt" "goimports")))
+
 (slb-hack-mode go-mode-hook nil
   (setq indent-tabs-mode t)
   (setq tab-width 2)
