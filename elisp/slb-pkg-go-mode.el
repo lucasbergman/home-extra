@@ -10,6 +10,7 @@
   (make-variable-buffer-local 'whitespace-style)
   (setq whitespace-style
         (remove 'lines-tail whitespace-style))
+  (add-hook 'before-save-hook #'gofmt-before-save)
   ;; Turn whitespace-mode off and on again for the changes to take effect.
   (whitespace-mode 0)
   (whitespace-mode 1))
