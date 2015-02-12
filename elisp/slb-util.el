@@ -17,6 +17,19 @@ Emacsen."
     (untabify (point-min) (point-max)))
   nil)
 
+(defun slb-path-resolve-exec (name)
+  "Try to resolve the given name in `exec-path'.
+
+If `name' isn't found in `exec-path', then emit a warning and
+return `name' unchanged."
+  (if (file-name-absolute-p name)
+      name
+    (let ((found-name (executable-find name)))
+      (if (not (null found-name))
+          found-name
+        (warn "not found in executable path: %s" name)
+        name))))
+
 (defmacro slb-hack-mode (hookvar &optional text-p &rest body)
   "Run common code as part of the hook HOOKVAR, followed by any
 other forms specified by BODY.  I use this for programming
