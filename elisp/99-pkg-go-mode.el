@@ -8,10 +8,10 @@
             (slb-hack-mode go-mode-hook nil
               (setq indent-tabs-mode t)
               (setq tab-width 2)
-              (make-local-variable 'whitespace-style)
               (add-hook 'before-save-hook #'gofmt-before-save)
+              ;; Customize WHITESPACE-MODE and restart it.
+              (make-local-variable 'whitespace-style)
               (setq whitespace-style
                     (remove 'lines-tail whitespace-style))
-              ;; Restart whitespace-mode for the changes to take effect.
               (whitespace-mode 0)
               (whitespace-mode 1))))
