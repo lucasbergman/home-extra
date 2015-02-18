@@ -35,7 +35,7 @@ return `name' unchanged."
 other forms specified by BODY.  I use this for programming
 language and other text file modes for turning on things like
 whitespace normalization on save, auto-fill, etc."
-  (declare (indent 1))
+  (declare (indent 2))
   `(add-hook ',hookvar
              '(lambda ()
                 (add-hook 'write-contents-hooks 'slb-untabify-buffer)
