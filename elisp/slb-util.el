@@ -39,6 +39,7 @@ whitespace normalization on save, auto-fill, etc."
   `(add-hook ',hookvar
              '(lambda ()
                 (add-hook 'write-contents-hooks 'slb-untabify-buffer)
+                (setq require-final-newline t)
                 (whitespace-mode 1)
                 (setq indent-tabs-mode nil)
                 (set-fill-column ,(if text-p 72 78))
