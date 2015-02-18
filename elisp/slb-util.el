@@ -1,21 +1,25 @@
-(defun slb-untabify-buffer ()
+(defun slb-clean-space-buffer ()
   "Convert tabs to spaces and elide trailing whitespace.
 
 This function will remove all literal tab characters in a buffer and
 replace them with a proper number of space characters, where `proper'
 means a number of spaces that will display the same as the tabs on a
-standard terminal that displays tabs modulo 8.
-
-This requires the UNTABIFY function, which is bundled into all modern
-Emacsen."
+standard terminal that displays tabs modulo 8."
   (interactive)
   (save-excursion
     (goto-char (point-min))
-    (while (re-search-forward "[ \t]+$" nil t)
+    (while (re-search-forward "[[:space:]]+$" nil t)
       (delete-region (match-beginning 0) (match-end 0))))
-  (when (not indent-tabs-mode)
+  (unless indent-tabs-mode
     (untabify (point-min) (point-max)))
   nil)
+
+(defun slb-buffer-has-trailing-space-p ()
+  "Whether the current buffer has trailing white space."
+  (let ((found-space-at (save-excursion
+                          (goto-char (point-min))
+                          (re-search-forward "[[:space:]]$" nil t))))
+    (and found-space-at t)))
 
 (defun slb-path-resolve-exec (name)
   "Try to resolve the given name in `exec-path'.
@@ -38,8 +42,10 @@ whitespace normalization on save, auto-fill, etc."
   (declare (indent 2))
   `(add-hook ',hookvar
              '(lambda ()
-                (add-hook 'write-contents-hooks 'slb-untabify-buffer)
                 (setq require-final-newline t)
+                (if (slb-buffer-has-trailing-space-p)
+                    (message "Space cleanup disabled")
+                  (add-hook 'write-contents-hooks #'slb-clean-space-buffer))
                 (whitespace-mode 1)
                 (setq indent-tabs-mode nil)
                 (set-fill-column ,(if text-p 72 78))
