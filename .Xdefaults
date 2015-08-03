@@ -2,8 +2,8 @@ URxvt.background: #111111
 URxvt.foreground: #ffffff
 URxvt.saveLines: 30000
 URxvt.scrollBar_right: true
-URxvt.font: xft:Droid Sans Mono:pixelsize=12:style=Regular
-URxvt.boldFont: xft:Droid Sans Mono:pixelsize=12:style=Bold
+URxvt.font: xft:Droid Sans Mono:size=9:style=Regular
+URxvt.boldFont: xft:Droid Sans Mono:size=9:style=Bold
 URxvt.letterSpace: -1
 ! Mouse button 2 allows dingus-clicking URLs.
 URxvt.perl-ext-common: default,matcher

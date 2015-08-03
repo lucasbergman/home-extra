@@ -6,7 +6,7 @@ import XMonad.Prompt.Shell (shellPrompt)
 
 promptConfig :: XPConfig
 promptConfig = defaultXPConfig
-    { font = "xft:Sans 14"
+    { font = "xft:sans:size=8"
     , height = 30
     }
 
