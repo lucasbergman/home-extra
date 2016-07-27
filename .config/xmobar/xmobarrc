@@ -1,4 +1,4 @@
-Config { font = "xft:sans:size=7"
+Config { font = "xft:sans:size=9"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Top
