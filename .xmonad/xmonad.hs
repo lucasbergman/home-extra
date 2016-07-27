@@ -5,6 +5,7 @@ import XMonad.Config.Desktop (desktopConfig, desktopLayoutModifiers)
 import XMonad.Config.SLB.Layout (layouts)
 import XMonad.Config.SLB.Prompt (myShellPrompt)
 import XMonad.Hooks.DynamicLog (xmobar)
+import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Util.EZConfig (additionalKeysP)
 
 main :: IO ()
@@ -15,7 +16,8 @@ main = xmonad =<< xmobar c
         { modMask = mod4Mask
         , borderWidth = 3
         , layoutHook = desktopLayoutModifiers layouts
-        , terminal = "exec urxvt"
+        , terminal = "exec roxterm"
+        , startupHook = setWMName "LG3D"
         }
     myKeys =
         [ ("C-M1-l", spawn "xscreensaver-command -lock")
