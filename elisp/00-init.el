@@ -57,10 +57,9 @@
    ((eq window-system 'ns) "menlo-12")
    ((eq window-system 'mac) "menlo-12")
    (t
-    (if (= 0 (shell-command (concat "grep -q DISTRIB_ID=Ubuntu"
-                                    " /etc/lsb-release 2>/dev/null")))
-        "Droid Sans Mono:size=10"
-      "Monospace:pixelsize=12"))))
+    (if (= 0 (shell-command "fc-list | grep -q DroidSansMono"))
+        "Droid Sans Mono:size=14"
+      "Monospace:size=14"))))
 
 ;;
 ;; Frame properties
