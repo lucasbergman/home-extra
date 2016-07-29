@@ -4,6 +4,12 @@
 ;; 800,000 bytes. Raise that to 10 MiB, because 1990 called.
 (setq gc-cons-threshold (* 10 1024 1024))
 
+(use-package whitespace
+  :diminish whitespace-mode
+  :config (setq whitespace-style '(face trailing space-after-tab
+                                   space-before-tab lines-tail)
+                whitespace-line-column 78))
+
 ;;
 ;; Basic configuration for some built-in editing modes
 ;;
