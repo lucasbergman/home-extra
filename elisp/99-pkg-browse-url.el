@@ -4,6 +4,7 @@
   "The browser command to use if $BROWSER is unset.")
 
 (use-package browse-url
+  :commands (browse-url browse-url-at-point)
   :config (let ((browser
                  (slb-path-resolve-exec
                   (let ((b (or (getenv "BROWSER") "")))
