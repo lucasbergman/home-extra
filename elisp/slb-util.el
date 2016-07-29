@@ -14,13 +14,6 @@ standard terminal that displays tabs modulo 8."
     (untabify (point-min) (point-max)))
   nil)
 
-(defun slb-buffer-has-trailing-space-p ()
-  "Whether the current buffer has trailing white space."
-  (let ((found-space-at (save-excursion
-                          (goto-char (point-min))
-                          (re-search-forward "[[:space:]]$" nil t))))
-    (and found-space-at t)))
-
 (defun slb-path-resolve-exec (name)
   "Try to resolve the given name in `exec-path'.
 
@@ -42,12 +35,7 @@ whitespace normalization on save, auto-fill, etc."
   (declare (indent 2))
   `(add-hook ',hookvar
              '(lambda ()
-                (setq require-final-newline t)
-                (if (slb-buffer-has-trailing-space-p)
-                    (message "Space cleanup disabled")
-                  (add-hook 'write-contents-hooks #'slb-clean-space-buffer))
                 (whitespace-mode 1)
-                (setq indent-tabs-mode nil)
                 (set-fill-column ,(if text-p 72 78))
                 (auto-fill-mode ,(if text-p 1 0))
                 ,(when text-p
