@@ -24,7 +24,7 @@ automatically by Emacs during startup")
 ;;
 (setq package-user-dir +slb-package-lisp-dir+
       package-archives '(("GNU" . "http://elpa.gnu.org/packages/")
-                         ("MELPA" . "http://melpa.milkbox.net/packages/")))
+                         ("MELPA" . "https://melpa.org/packages/")))
 (package-initialize)
 
 (defun slb-init-lisp-load (dir)
