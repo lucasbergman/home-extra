@@ -98,15 +98,6 @@
 (put 'downcase-region 'disabled nil)
 
 ;;
-;; Uniquification of buffer names
-;;
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse
-      uniquify-separator "|"
-      uniquify-after-kill-buffer-p t
-      uniquify-ignore-buffers-re "^\\*")
-
-;;
 ;; Start the server process if I'm not already running daemon mode.
 ;;
 (unless (daemonp)
