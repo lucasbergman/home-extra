@@ -4,6 +4,14 @@
 ;; 800,000 bytes. Raise that to 10 MiB, because 1990 called.
 (setq gc-cons-threshold (* 10 1024 1024))
 
+(unless (package-installed-p 'use-package)
+  (message "Installing USE-PACKAGE...")
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-verbose t)
+
 (use-package whitespace
   :diminish whitespace-mode
   :config (setq whitespace-style '(face trailing space-after-tab
