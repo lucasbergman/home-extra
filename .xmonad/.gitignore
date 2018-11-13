@@ -1,5 +1,6 @@
 **/*.hi
 **/*.o
-history
-xmonad.errors
-xmonad-*-linux
+/prompt-history
+/xmonad.errors
+/xmonad.state
+/xmonad-*-linux
