@@ -16,7 +16,7 @@ main = xmonad =<< xmobar c
         { modMask = mod4Mask
         , borderWidth = 3
         , layoutHook = desktopLayoutModifiers layouts
-        , terminal = "exec roxterm"
+        , terminal = "exec gnome-terminal"
         , startupHook = setWMName "LG3D"
         }
     myKeys =
