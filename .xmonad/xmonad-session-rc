@@ -1,0 +1,4 @@
+xset s 300 5
+xss-lock \
+  --transfer-sleep-lock \
+  -- "$HOME/.xmonad/screenlock" &

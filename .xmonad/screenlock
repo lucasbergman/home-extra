@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+if [ -e /usr/share/goobuntu-desktop-files ]; then
+  exec /usr/share/goobuntu-desktop-files/xsecurelock.sh 
+fi
+exec xsecurelock

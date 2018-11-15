@@ -20,6 +20,6 @@ main = xmonad =<< xmobar c
         , startupHook = setWMName "LG3D"
         }
     myKeys =
-        [ ("C-M1-l", spawn "xscreensaver-command -lock")
+        [ ("C-M1-l", spawn ".xmonad/screenlock")
         , ("C-M1-k", myShellPrompt)
         ]
