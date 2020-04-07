@@ -2,10 +2,10 @@
 
 [global]
 font = "Sans 14"
-allow_markup = yes
+markup = yes
 format = "<b>%s</b> %b"
 word_wrap = yes
-geometry = "500x16-0+30"
+geometry = "500x16-200+100"
 transparency = 20
 
 show_age_threshold = 60
