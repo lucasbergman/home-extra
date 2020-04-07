@@ -1,4 +1,5 @@
 xset s 300 5
+pulseaudio --daemonize=yes
 xss-lock \
   --transfer-sleep-lock \
   -- "$HOME/.xmonad/screenlock" &
