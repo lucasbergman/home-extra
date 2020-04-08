@@ -1,2 +1,0 @@
-#!/bin/sh
-exec xsettingsd -c $HOME/.config/xsettingsd
