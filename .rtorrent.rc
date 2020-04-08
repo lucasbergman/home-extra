@@ -1,8 +1,0 @@
-port_range = 50006-50007
-upload_rate = 300
-download_rate = 850
-#safe_sync = yes
-max_peers = 50
-#ratio.min.set = 50
-#ratio.max.set = 150
-#ratio.upload.set = 100M
