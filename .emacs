@@ -23,8 +23,7 @@ automatically by Emacs during startup")
 ;; Bootstrap ELPA support
 ;;
 (setq package-user-dir +slb-package-lisp-dir+
-      package-archives '(("MELPA" . "https://melpa.org/packages/")
-                         ("GNU" . "http://elpa.gnu.org/packages/")))
+      package-archives '(("MELPA" . "https://melpa.org/packages/")))
 (package-initialize)
 
 (defun slb-init-lisp-load (dir)
