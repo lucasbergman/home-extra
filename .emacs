@@ -10,21 +10,17 @@
   (expand-file-name "~/.emacs.lisp.d")
   "Directory for non-packaged Emacs initialization files")
 
-(defconst +slb-package-lisp-dir+
-  (expand-file-name "~/opt/elisp")
-  "Directory for Emacs packages")
-
 (defconst +slb-init-lisp-pattern+
   "^[0-9].*\\.el$"
   "Regular expression matching lisp files that should be loaded
 automatically by Emacs during startup")
 
 ;;
-;; Bootstrap ELPA support
+;; Bootstrap ELPA support if we're in Emacs 26
 ;;
-(setq package-user-dir +slb-package-lisp-dir+
-      package-archives '(("MELPA" . "https://melpa.org/packages/")))
-(package-initialize)
+(when (< emacs-major-version 27)
+  (setq package-archives '(("MELPA" . "https://melpa.org/packages/")))
+  (package-initialize))
 
 (defun slb-init-lisp-load (dir)
   "Load the Lisp initialization directory DIR.
