@@ -18,8 +18,8 @@ automatically by Emacs during startup")
 ;;
 ;; Bootstrap ELPA support if we're in Emacs 26
 ;;
+(setq package-archives '(("MELPA" . "https://melpa.org/packages/")))
 (when (< emacs-major-version 27)
-  (setq package-archives '(("MELPA" . "https://melpa.org/packages/")))
   (package-initialize))
 
 (defun slb-init-lisp-load (dir)
