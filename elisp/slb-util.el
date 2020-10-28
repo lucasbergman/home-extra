@@ -36,6 +36,7 @@ whitespace normalization on save, auto-fill, etc."
   `(add-hook ',hookvar
              '(lambda ()
                 (whitespace-mode 1)
+                (smartparens-mode ,(if text-p 0 1))
                 (set-fill-column ,(if text-p 72 78))
                 (auto-fill-mode ,(if text-p 1 0))
                 ,(when text-p
