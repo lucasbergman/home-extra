@@ -1,3 +1,4 @@
+(require 'package)
 (require 'slb-util)
 
 ;; By default, Emacs runs stop-the-world GC after consing something like

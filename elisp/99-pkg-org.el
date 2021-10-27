@@ -1,3 +1,3 @@
 (use-package org
-  :ensure t
+  :ensure nil  ;; org-mode is built in now
   :commands (org-mode org-agenda))
